@@ -2,22 +2,22 @@ var connection = require("./connection.js");
 
 // Object for all our SQL statement functions.
 var orm = {
-    all: function(table, cb) {
-        connection.query("SELECT * FROM " + table + ";", function(err, result) {
+    all: (table, cb) => {
+        connection.query("SELECT * FROM " + table + ";", (err, result) => {
             if (err) throw err;
             cb(result);
         });
     },
     
-    update: function(table, condition, cb) {
-        connection.query("UPDATE " + table + " SET devoured=true WHERE id=" + condition + ";", function(err, result) {
+    update: (table, condition, cb) => {
+        connection.query("UPDATE " + table + " SET devoured=true WHERE id=" + condition + ";", (err, result) => {
             if (err) throw err;
             cb(result);
         });
     },
 
-    create: function(table, val, cb) {
-        connection.query('INSERT INTO ' +table+ ' (burger_name) VALUES ("' +val+ '");', function(err,result){
+    create: (table, val, cb) => {
+        connection.query('INSERT INTO ' +table+ ' (burger_name) VALUES ("' +val+ '");', (err,result) => {
             if(err) throw err;
             cb(result);
         })
